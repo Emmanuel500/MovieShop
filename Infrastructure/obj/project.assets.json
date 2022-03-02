@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "ApplicationCore/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/ApplicationCore.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ApplicationCore.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "ApplicationCore/1.0.0": {
+      "type": "project",
+      "path": "../ApplicationCore/ApplicationCore.csproj",
+      "msbuildProject": "../ApplicationCore/ApplicationCore.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "ApplicationCore >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Eph96\\.nuget\\packages\\": {},
@@ -37,7 +56,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Eph96\\Documents\\Job\\Antra\\Homework\\MovieShop\\ApplicationCore\\ApplicationCore.csproj": {
+              "projectPath": "C:\\Users\\Eph96\\Documents\\Job\\Antra\\Homework\\MovieShop\\ApplicationCore\\ApplicationCore.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

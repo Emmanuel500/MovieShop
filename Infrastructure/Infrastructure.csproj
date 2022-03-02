@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\ApplicationCore\ApplicationCore.csproj" />
   </ItemGroup>
 
 </Project>
