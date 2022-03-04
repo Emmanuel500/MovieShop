@@ -1,4 +1,7 @@
 ﻿using ApplicationCore.Contracts.Repository;
+using ApplicationCore.Entities;
+using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +10,31 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repository
 {
-    public class MovieRepository: IMovieRepository
+    public class MovieRepository: EfRepository<Movie>, IMovieRepository
     {
+        public MovieRepository(MovieShopDbContext dbContext) : base(dbContext)
+        {
+        }
+
+        public IEnumerable<Movie> GetTop30RevenueMovies()
+        {
+            // get top 30 movies by revenue
+            var movies = _dbContext.Movies.OrderByDescending(m => m.Revenue).Take(30);
+            return movies;
+        }
+
+        public override Movie GetById(int id)
+        {
+            // First throw ex if no matches found
+            // FirstOrDefault safest
+            // Single throw ex 0 or more than 1
+            // SingleOrDefault throw ex if more than 1 
+            // we need to use Include method
+            var movieDetails = _dbContext.Movies.Include(m => m.Genres).ThenInclude(m => m.Genre)
+                .Include(m => m.MovieCasts).ThenInclude(m => m.Cast)
+                .Include(m => m.Trailers)
+                .FirstOrDefault(m => m.Id == id);
+            return movieDetails;
+        }
     }
 }

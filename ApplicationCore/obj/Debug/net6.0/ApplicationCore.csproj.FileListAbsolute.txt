@@ -1,0 +1,12 @@
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.csproj.AssemblyReference.cache
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.AssemblyInfoInputs.cache
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.AssemblyInfo.cs
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\ApplicationCore\bin\Debug\net6.0\ApplicationCore.deps.json
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\ApplicationCore\bin\Debug\net6.0\ApplicationCore.dll
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\ApplicationCore\bin\Debug\net6.0\ref\ApplicationCore.dll
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\ApplicationCore\bin\Debug\net6.0\ApplicationCore.pdb
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.dll
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\ApplicationCore\obj\Debug\net6.0\ref\ApplicationCore.dll
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\ApplicationCore\obj\Debug\net6.0\ApplicationCore.pdb

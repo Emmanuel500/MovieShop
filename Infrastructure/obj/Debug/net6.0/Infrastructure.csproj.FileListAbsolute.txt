@@ -1,0 +1,15 @@
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\Infrastructure\obj\Debug\net6.0\Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\Infrastructure\obj\Debug\net6.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\Infrastructure\obj\Debug\net6.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\Infrastructure\obj\Debug\net6.0\Infrastructure.AssemblyInfo.cs
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\Infrastructure\obj\Debug\net6.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\Infrastructure\bin\Debug\net6.0\Infrastructure.deps.json
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\Infrastructure\bin\Debug\net6.0\Infrastructure.dll
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\Infrastructure\bin\Debug\net6.0\ref\Infrastructure.dll
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\Infrastructure\bin\Debug\net6.0\Infrastructure.pdb
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\Infrastructure\bin\Debug\net6.0\ApplicationCore.dll
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\Infrastructure\bin\Debug\net6.0\ApplicationCore.pdb
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\Infrastructure\obj\Debug\net6.0\Infrastructure.csproj.CopyComplete
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\Infrastructure\obj\Debug\net6.0\Infrastructure.dll
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\Infrastructure\obj\Debug\net6.0\ref\Infrastructure.dll
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\Infrastructure\obj\Debug\net6.0\Infrastructure.pdb
