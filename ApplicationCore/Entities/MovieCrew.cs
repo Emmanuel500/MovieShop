@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Entities
 {
-    public class Trailer
+    public class MovieCrew
     {
-        public int Id { get; set; }
-        public string? TrailerUrl { get; set; }
-        public string? Name { get; set; }
-
-        // reference to Movie Id FK
         public int MovieId { get; set; }
+        public int CrewId { get; set; }
+        public string Department { get; set; }
+        public string Job { get; set; }
 
-        // Navigation property
+        // Navigation Propertys
+        public Crew Crew { get; set; }
         public Movie Movie { get; set; }
     }
 }

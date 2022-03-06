@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Entities
 {
-    public class Trailer
+    public class Favorite
     {
         public int Id { get; set; }
-        public string? TrailerUrl { get; set; }
-        public string? Name { get; set; }
-
-        // reference to Movie Id FK
         public int MovieId { get; set; }
+        public int UserId { get; set; }
 
-        // Navigation property
+        // Navigation Propertys
         public Movie Movie { get; set; }
+        public User User { get; set; }
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplicationCore.Entities
+namespace ApplicationCore.Models
 {
-    public class Cast
+    public class CastDetailsModel
     {
         public int Id { get; set; }
         public string? Name { get; set; }
@@ -14,7 +14,6 @@ namespace ApplicationCore.Entities
         public string? TmdbUrl { get; set; }
         public string? ProfilePath { get; set; }
 
-        // Navigation Propertys
-        public ICollection<MovieCast> MovieCasts { get; set; }
+        public List<MovieCardModel> Movies { get; set; }
     }
 }

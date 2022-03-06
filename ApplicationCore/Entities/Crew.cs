@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Entities
 {
-    public class Cast
+    public class Crew
     {
         public int Id { get; set; }
         public string? Name { get; set; }
@@ -15,6 +15,6 @@ namespace ApplicationCore.Entities
         public string? ProfilePath { get; set; }
 
         // Navigation Propertys
-        public ICollection<MovieCast> MovieCasts { get; set; }
+        public ICollection<MovieCrew> MovieCrews { get; set; }
     }
 }
