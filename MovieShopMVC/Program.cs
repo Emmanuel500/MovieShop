@@ -12,6 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IMovieService, MovieService>();
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
+builder.Services.AddScoped<ICastService, CastService>();
+builder.Services.AddScoped<ICastRepository, CastRepository>();
 
 // if conteollername ==home then for IMovieSefvife use MovieSegvie
 // if conterllnam= movies then for IMovieService ise MovieMockSevice

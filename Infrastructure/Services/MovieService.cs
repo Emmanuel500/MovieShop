@@ -70,8 +70,8 @@ namespace Infrastructure.Services
                 movieDetails.Casts.Add(new CastModel
                 {
                     Id = cast.CastId,
-                    Character = cast.Character,
                     Name = cast.Cast.Name,
+                    Character = cast.Character,
                     ProfilePath = cast.Cast.ProfilePath
                 });
 

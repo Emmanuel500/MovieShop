@@ -4,6 +4,7 @@ using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(MovieShopDbContext))]
-    partial class MovieShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220306172620_CastDetails")]
+    partial class CastDetails
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,7 +50,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Casts", (string)null);
+                    b.ToTable("Casts");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Crew", b =>
@@ -77,7 +79,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Crews", (string)null);
+                    b.ToTable("Crews");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Favorite", b =>
@@ -100,7 +102,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Favorite", (string)null);
+                    b.ToTable("Favorite");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Genre", b =>
@@ -118,7 +120,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genre", (string)null);
+                    b.ToTable("Genre");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Movie", b =>
@@ -219,7 +221,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("CastId");
 
-                    b.ToTable("MovieCast", (string)null);
+                    b.ToTable("MovieCast");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.MovieCrew", b =>
@@ -244,7 +246,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("CrewId");
 
-                    b.ToTable("MovieCrew", (string)null);
+                    b.ToTable("MovieCrew");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.MovieGenre", b =>
@@ -294,7 +296,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Purchase", (string)null);
+                    b.ToTable("Purchase");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Review", b =>
@@ -318,7 +320,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Review", (string)null);
+                    b.ToTable("Review");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Role", b =>
@@ -335,7 +337,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Role", (string)null);
+                    b.ToTable("Role");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Trailer", b =>
@@ -416,7 +418,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User", (string)null);
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.UserRole", b =>
@@ -431,7 +433,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("UserRole", (string)null);
+                    b.ToTable("UserRole");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Favorite", b =>

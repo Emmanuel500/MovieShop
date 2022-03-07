@@ -18,11 +18,7 @@ namespace Infrastructure.Repository
 
         public override Cast GetById(int id)
         {
-            var castDetails = _dbContext.Casts.Include(c => c.Name)
-                .Include(c => c.Gender)
-                .Include(c => c.TmdbUrl)
-                .Include(c => c.ProfilePath)
-                .Include(c => c.MovieCasts).ThenInclude(c => c.Movie)
+            var castDetails = _dbContext.Casts.Include(c => c.MovieCasts).ThenInclude(c => c.Movie)
                 .FirstOrDefault(m => m.Id == id);
             return castDetails;
         }
