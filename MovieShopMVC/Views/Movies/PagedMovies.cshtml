@@ -1,0 +1,52 @@
+﻿@model ApplicationCore.Models.PagedResultSet<ApplicationCore.Models.MovieCardModel>
+
+
+<div class="rounded">
+    <div class="container-fluid bg-light">
+        <div class="row">
+            @* ReSharper disable once CSharpWarnings::CS8602 *@
+            @foreach (var movie in Model?.Data)
+            {
+                <div class="col-6 col-lg-3 col-sm-4 col-xl-2">
+                    @*<partial name="MovieCard" model="movie"/>*@
+                    @await Html.PartialAsync("_MovieCard", movie)
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+
+        @if (Model.HasPreviousPage)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-route-pageNumber = "@(Model.PageIndex - 1)" asp-action="MoviesByGenre" >
+                    &laquo;
+                </a>
+            </li>
+        }
+
+        @for (var i = 1; i <= Model.TotalPages; i++)
+        {
+            
+            <li class="page-item">
+                <a class="page-link" asp-route-pageNumber = "@i" asp-action="MoviesByGenre" >
+                    @i
+                </a>
+            </li>
+            
+        }
+
+        @if (Model.HasNextPage)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-route-pageNumber = "@(Model.PageIndex + 1)" asp-action="MoviesByGenre" >
+                    &raquo;
+                </a>
+            </li>
+        }
+
+    </ul>
+</nav>

@@ -11,12 +11,19 @@ namespace MovieShopMVC.Controllers
             _movieService = movieService;
         }
 
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
             // Movie Service with Details
             // pass the movie details data to view
-            var movieDetails = _movieService.GetMovieDetails(id);
+            var movieDetails = await _movieService.GetMovieDetails(id);
             return View(movieDetails);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> MoviesByGenre(int id, int pageSize=30, int pageNumber=1)
+        {
+            var pagedMovies = await _movieService.GetMoviesByGenrePagination(id, pageSize, pageNumber);
+            return View("PagedMovies", pagedMovies);
         }
     }
 }
