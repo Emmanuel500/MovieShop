@@ -62,6 +62,7 @@ namespace Infrastructure.Data
 
         private void ConfigureCast(EntityTypeBuilder<Cast> builder)
         {
+            builder.ToTable("Cast");
             builder.Property(c => c.Name).HasMaxLength(128);
             builder.Property(c => c.Gender).HasMaxLength(4096);
             builder.Property(c => c.TmdbUrl).HasMaxLength(4096);
@@ -70,12 +71,14 @@ namespace Infrastructure.Data
 
         private void ConfigureMovieCast(EntityTypeBuilder<MovieCast> builder)
         {
+            builder.ToTable("MovieCast");
             builder.HasKey(m => new { m.MovieId, m.CastId });
             builder.Property(m => m.Character).HasMaxLength(450);
         }
 
         private void ConfigureCrew(EntityTypeBuilder<Crew> builder)
         {
+            builder.ToTable("Crew");
             builder.Property(c => c.Name).HasMaxLength(128);
             builder.Property(c => c.Gender).HasMaxLength(4096);
             builder.Property(c => c.TmdbUrl).HasMaxLength(4096);
@@ -84,6 +87,7 @@ namespace Infrastructure.Data
 
         private void ConfigureMovieCrew(EntityTypeBuilder<MovieCrew> builder)
         {
+            builder.ToTable("MovieCrew");
             builder.HasKey(m => new { m.MovieId, m.CrewId });
             builder.Property(m => m.Department).HasMaxLength(128);
             builder.Property(m => m.Job).HasMaxLength(128);
@@ -91,6 +95,7 @@ namespace Infrastructure.Data
 
         private void ConfigureReview(EntityTypeBuilder<Review> builder)
         {
+            builder.ToTable("Review");
             builder.HasKey(r => new { r.MovieId, r.UserId });
             builder.Property(m => m.Rating).HasColumnType("decimal(3, 2)").HasDefaultValue(9.9m);
             builder.Property(m => m.ReviewText).HasMaxLength(4096);
@@ -98,21 +103,25 @@ namespace Infrastructure.Data
 
         private void ConfigurePurchase(EntityTypeBuilder<Purchase> builder)
         {
+            builder.ToTable("Purchase");
             builder.Property(m => m.TotalPrice).HasColumnType("decimal(18, 2)").HasDefaultValue(9.9m);
         }
 
         private void ConfigureUserRole(EntityTypeBuilder<UserRole> builder)
         {
+            builder.ToTable("UserRole");
             builder.HasKey(u => new { u.UserId, u.RoleId });
         }
 
         private void ConfigureRole(EntityTypeBuilder<Role> builder)
         {
+            builder.ToTable("Role");
             builder.Property(r => r.Name).HasMaxLength(20);
         }
 
         private void ConfigureUser(EntityTypeBuilder<User> builder)
         {
+            builder.ToTable("User");
             builder.Property(u => u.FirstName).HasMaxLength(128);
             builder.Property(u => u.LastName).HasMaxLength(128);
             builder.Property(u => u.Email).HasMaxLength(256);
