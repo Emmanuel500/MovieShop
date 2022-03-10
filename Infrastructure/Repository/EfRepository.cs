@@ -17,27 +17,29 @@ namespace Infrastructure.Repository
             _dbContext = dbContext;
         }
 
-        public virtual Task<T> GetById(int id)
+        public async virtual Task<T> GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<T>> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Task<T> Add(T entity)
+        public async Task<T> Add(T entity)
+        {
+            _dbContext.Set<T>().Add(entity);
+            await _dbContext.SaveChangesAsync();
+            return entity;
+        }
+
+        public async Task<T> Update(T entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<T> Update(T entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<T> Delete(T entity)
+        public async Task<T> Delete(T entity)
         {
             throw new NotImplementedException();
         }
