@@ -9,7 +9,20 @@
         <div class="col">
             <h2 class="my-2"><a href=@Model.TmdbUrl>@Model.Name</a></h2>
             <br/>
-            <h3>@Model.Gender</h3>
+            <h3> Gender: 
+            @if(Int32.Parse(Model.Gender) == 1)
+            {
+                <nobr>Female</nobr>
+            }
+            else if(Int32.Parse(Model.Gender) == 2)
+            {
+                <nobr>Male</nobr>
+            }
+            else
+            {
+                <nobr>N/A</nobr>
+            }
+            </h3>
             <br/>
         </div>
     </div>
