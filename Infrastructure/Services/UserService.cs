@@ -88,56 +88,52 @@ namespace Infrastructure.Services
         }
 
         //GetAll
-        public async Task<List<FavoriteRequestModel>> GetAllFavoritesForUser(int id)
+        public async Task<List<MovieCardModel>> GetAllFavoritesForUser(int id)
         {
             var favorites = await _userRepository.GetAllFavoritesFromUser(id);
-            var favoriteList = new List<FavoriteRequestModel>();
+            var favoriteList = new List<MovieCardModel>();
 
             // mapping entities data in to models data
             foreach (var favorite in favorites)
-                favoriteList.Add(new FavoriteRequestModel
+                favoriteList.Add(new MovieCardModel
                 {
-                    Id = favorite.Id,
-                    UserId = favorite.UserId,
-                    MovieId = favorite.MovieId
+                    Id = favorite.Movie.Id,
+                    Title = favorite.Movie.Title,
+                    PosterUrl = favorite.Movie.PosterUrl
                 });
 
             return favoriteList;
         }
 
-        public async Task<List<PurchaseRequestModel>> GetAllPurchasesForUser(int id)
+        public async Task<List<MovieCardModel>> GetAllPurchasesForUser(int id)
         {
             var purchases = await _userRepository.GetAllPurchasesFromUser(id);
-            var purchaseList = new List<PurchaseRequestModel>();
+            var purchaseList = new List<MovieCardModel>();
 
             // mapping entities data in to models data
             foreach (var purchase in purchases)
-                purchaseList.Add(new PurchaseRequestModel
+                purchaseList.Add(new MovieCardModel
                 {
-                    Id = purchase.Id,
-                    UserId = purchase.UserId,
-                    MovieId = purchase.MovieId,
-                    PurchaseNumber = purchase.PurchaseNumber,
-                    TotalPrice = purchase.TotalPrice,
-                    PurchaseDateTime = purchase.PurchaseDateTime
+                    Id = purchase.Movie.Id,
+                    Title = purchase.Movie.Title,
+                    PosterUrl = purchase.Movie.PosterUrl
                 });
 
             return purchaseList;
         }
 
-        public async Task<List<ReviewRequestModel>> GetAllReviewsByUser(int id)
+        public async Task<List<MovieCardModel>> GetAllReviewsByUser(int id)
         {
             var reviews = await _userRepository.GetAllReviewsFromUser(id);
-            var reviewList = new List<ReviewRequestModel>();
+            var reviewList = new List<MovieCardModel>();
 
             // mapping entities data in to models data
             foreach (var review in reviews)
-                reviewList.Add(new ReviewRequestModel
+                reviewList.Add(new MovieCardModel
                 {
-                    UserId = review.UserId,
-                    MovieId = review.MovieId,
-                    Rating = review.Rating,
-                    ReviewText = review.ReviewText
+                    Id = review.Movie.Id,
+                    Title = review.Movie.Title,
+                    PosterUrl = review.Movie.PosterUrl
                 });
 
             return reviewList;

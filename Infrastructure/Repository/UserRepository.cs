@@ -26,7 +26,7 @@ namespace Infrastructure.Repository
         //Favorites
         public async Task<IEnumerable<Favorite>> GetAllFavoritesFromUser(int userId)
         {
-            var favorites = await _dbContext.Favorites.Where(f => f.UserId == userId).ToListAsync();
+            var favorites = await _dbContext.Favorites.Where(f => f.UserId == userId).Include(f => f.Movie).ToListAsync();
             return favorites;
         }
 
@@ -60,7 +60,7 @@ namespace Infrastructure.Repository
         //Reviews
         public async Task<IEnumerable<Review>> GetAllReviewsFromUser(int userId)
         {
-            var reviews = await _dbContext.Reviews.Where(f => f.UserId == userId).ToListAsync();
+            var reviews = await _dbContext.Reviews.Where(r => r.UserId == userId).Include(r => r.Movie).ToListAsync();
             return reviews;
         }
 
@@ -98,7 +98,7 @@ namespace Infrastructure.Repository
 
         public async Task<IEnumerable<Purchase>> GetAllPurchasesFromUser(int userId)
         {
-            var purchases = await _dbContext.Purchases.Where(f => f.UserId == userId).ToListAsync();
+            var purchases = await _dbContext.Purchases.Where(p => p.UserId == userId).Include(p => p.Movie).ToListAsync();
             return purchases;
         }
 
