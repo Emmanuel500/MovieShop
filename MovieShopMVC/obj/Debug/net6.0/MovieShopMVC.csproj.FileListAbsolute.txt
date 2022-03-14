@@ -267,3 +267,13 @@ C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\MovieShopMVC\bin\Debug\net
 C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\MovieShopMVC\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\MovieShopMVC\bin\Debug\net6.0\runtimes\win-arm\lib\net6.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\MovieShopMVC\bin\Debug\net6.0\runtimes\win-arm64\lib\net6.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\MovieShopMVC\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\MovieShopMVC\bin\Debug\net6.0\Serilog.dll
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\MovieShopMVC\bin\Debug\net6.0\Serilog.AspNetCore.dll
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\MovieShopMVC\bin\Debug\net6.0\Serilog.Extensions.Hosting.dll
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\MovieShopMVC\bin\Debug\net6.0\Serilog.Extensions.Logging.dll
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\MovieShopMVC\bin\Debug\net6.0\Serilog.Formatting.Compact.dll
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\MovieShopMVC\bin\Debug\net6.0\Serilog.Settings.Configuration.dll
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\MovieShopMVC\bin\Debug\net6.0\Serilog.Sinks.Console.dll
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\MovieShopMVC\bin\Debug\net6.0\Serilog.Sinks.Debug.dll
+C:\Users\Eph96\Documents\Job\Antra\Homework\MovieShop\MovieShopMVC\bin\Debug\net6.0\Serilog.Sinks.File.dll

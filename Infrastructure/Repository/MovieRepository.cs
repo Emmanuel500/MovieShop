@@ -29,7 +29,7 @@ namespace Infrastructure.Repository
             // First throw ex if no matches found
             // FirstOrDefault safest
             // Single throw ex 0 or more than 1
-            // SingleOrDefault throw ex if more than 1 
+            // SingleOrDefault throw ex if more than 1
             // we need to use Include method
             var movieDetails = await _dbContext.Movies.Include(m => m.Genres).ThenInclude(m => m.Genre)
                 .Include(m => m.MovieCasts).ThenInclude(m => m.Cast)
