@@ -6,6 +6,7 @@ using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using MovieShopMVC.Services;
+using MovieShopMVC.Infra;
 using Serilog.Events;
 using Serilog;
 
@@ -53,11 +54,10 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseMovieShopExceptionMiddleware();
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
-//User SeriLog !!!
-//app.UseSerilogRequestLogging();
 
 app.UseRouting();
 

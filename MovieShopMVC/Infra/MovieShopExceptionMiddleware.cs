@@ -1,4 +1,5 @@
 ﻿using Serilog;
+using Serilog.Events;
 
 namespace MovieShopMVC.Infra
 {
@@ -53,6 +54,12 @@ namespace MovieShopMVC.Infra
 
             //!!
             // log the above object details to text or json file using Serilog
+            Log.Logger = new LoggerConfiguration()
+                            .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                            .Enrich.FromLogContext()
+                            .WriteTo.Console()
+                            .CreateLogger();
+
             Log.Information(exceptionDetails.ExceptionMessage);
             Log.Information(exceptionDetails.ExceptionStackTrace);
             Log.Information(Convert.ToString(exceptionDetails.ExceptionType));
