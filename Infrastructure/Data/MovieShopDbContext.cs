@@ -108,6 +108,8 @@ namespace Infrastructure.Data
         {
             builder.ToTable("Purchase");
             builder.Property(m => m.TotalPrice).HasColumnType("decimal(18, 2)").HasDefaultValue(9.9m);
+            builder.HasKey(m => m.Id);
+            builder.HasAlternateKey(m => new { m.UserId, m.MovieId });
         }
 
         private void ConfigureUserRole(EntityTypeBuilder<UserRole> builder)

@@ -102,5 +102,10 @@ namespace Infrastructure.Services
 
             return new PagedResultSet<MovieCardModel>(movieCards, pageNumber, pageSize, pagedMovies.Count);
         }
+
+        public async Task<decimal> GetMoviePrice(int movieId)
+        {
+            return await _movieRepository.GetMoviePrice(movieId);
+        }
     }
 }

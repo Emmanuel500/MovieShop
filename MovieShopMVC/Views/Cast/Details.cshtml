@@ -7,7 +7,7 @@
             <img src="@Model.ProfilePath" height="100px" alt="@Model.Name" class="img-fluid"/>
         </div>
         <div class="col">
-            <h2 class="my-2"><a href=@Model.TmdbUrl>@Model.Name</a></h2>
+            <h2 class="my-2"><a href=@Model.TmdbUrl target="_blank">@Model.Name</a></h2>
             <br/>
             <h3> Gender: 
             @if(Int32.Parse(Model.Gender) == 1)

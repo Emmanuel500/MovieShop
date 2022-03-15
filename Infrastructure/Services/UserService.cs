@@ -81,9 +81,9 @@ namespace Infrastructure.Services
             return favoriteExist;
         }
 
-        public async Task<bool> IsMoviePurchased(PurchaseRequestModel purchaseRequest, int userId)
+        public async Task<bool> IsMoviePurchased(int movieId, int userId)
         {
-            var favoriteExist = await _userRepository.UserPurchaseExist(purchaseRequest.Id, userId);
+            var favoriteExist = await _userRepository.UserPurchaseExist(movieId, userId);
             return favoriteExist;
         }
 
@@ -147,7 +147,7 @@ namespace Infrastructure.Services
             var purchaseDetails = new PurchaseRequestModel
             {
                 Id = purchase.Id,
-                UserId = purchase.UserId,
+                UserId = userId,
                 MovieId = purchase.MovieId,
                 PurchaseNumber = purchase.PurchaseNumber,
                 PurchaseDateTime = purchase.PurchaseDateTime,

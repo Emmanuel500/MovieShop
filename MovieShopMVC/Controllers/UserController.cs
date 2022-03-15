@@ -11,11 +11,13 @@ namespace MovieShopMVC.Controllers
     {
         private readonly ICurrentUser _currentUser;
         private readonly IUserService _userService;
+        private readonly IMovieService _movieService;
 
-        public UserController(ICurrentUser currentUser, IUserService userService)
+        public UserController(ICurrentUser currentUser, IUserService userService, IMovieService movieService)
         {
             _currentUser = currentUser;
             _userService = userService;
+            _movieService = movieService;
         }
 
         [HttpGet]
@@ -42,11 +44,20 @@ namespace MovieShopMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> BuyMovie(PurchaseRequestModel purchaseRequest)
+        public async Task<IActionResult> BuyMovie(int movieId)
         {
             var userId = _currentUser.UserId;
+            var moviePrice = await _movieService.GetMoviePrice(movieId);
+           // var moviePrice = 
+            var purchaseRequest = new PurchaseRequestModel {
+                MovieId = movieId,
+                UserId = userId,
+                PurchaseNumber = Guid.NewGuid(),
+                TotalPrice = moviePrice,
+                PurchaseDateTime = DateTime.UtcNow
+            };
             var purchase = await _userService.PurchaseMovie(purchaseRequest, userId);
-            return View();
+            return RedirectToAction("Purchases");
         }
 
         [HttpPost]
