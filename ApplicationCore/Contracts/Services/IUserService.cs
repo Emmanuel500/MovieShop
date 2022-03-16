@@ -19,6 +19,7 @@ namespace ApplicationCore.Contracts.Services
         Task<List<MovieCardModel>> GetAllFavoritesForUser(int id);
         Task AddMovieReview(ReviewRequestModel reviewRequest);
         Task UpdateMovieReview(ReviewRequestModel reviewRequest);
+        Task<ReviewRequestModel> GetReviewDetails(int userId, int movieId);
         Task DeleteMovieReview(int userId, int movieId);
         Task<List<MovieCardModel>> GetAllReviewsByUser(int id);
     }

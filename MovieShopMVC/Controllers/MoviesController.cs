@@ -26,11 +26,27 @@ namespace MovieShopMVC.Controllers
             if (_currentUser.IsAuthenticated)
             {
                 var moviePurchased = await _userService.IsMoviePurchased(id, _currentUser.UserId);
+                var movieFavorited = await _userService.FavoriteExists(_currentUser.UserId, id);
+                var movieRewview = await _userService.GetReviewDetails(_currentUser.UserId, id);
                 ViewBag.MoviePurchased = moviePurchased;
+                ViewBag.MovieFavorited = movieFavorited;
+                if (movieRewview != null)
+                {
+                    ViewBag.Rating = movieRewview.Rating;
+                    ViewBag.ReviewText = movieRewview.ReviewText;
+                }
+                else
+                {
+                    ViewBag.Rating = 0;
+                    ViewBag.ReviewText = "";
+                }
             }
             else
             {
                 ViewBag.MoviePurchased = false;
+                ViewBag.MovieFavorited = false;
+                ViewBag.Rating = 0;
+                ViewBag.ReviewText = "";
             }
                        
             var movieDetails = await _movieService.GetMovieDetails(id);

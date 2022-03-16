@@ -15,8 +15,9 @@ namespace ApplicationCore.Contracts.Repository
         Task<Purchase> AddPurchase(Purchase purchase);
         Task<Review> UpdateReview(Review review);
         Task RemoveReview(int userId, int movieId);
-        Task RemoveFavorite(int favoriteId, int userId, int movieId);
+        Task RemoveFavorite(int userId, int movieId);
         Task<Purchase> GetUserPurchase(int userId, int movieId);
+        Task<Review> GetUserReview(int userId, int movieId);
         Task<bool> UserFavoriteExist(int userId, int movieId);
         Task<bool> UserPurchaseExist(int purchaseId, int userId);
         Task<IEnumerable<Favorite>> GetAllFavoritesFromUser(int userId);

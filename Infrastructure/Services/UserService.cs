@@ -71,7 +71,7 @@ namespace Infrastructure.Services
 
         public async Task RemoveFavorite(FavoriteRequestModel favoriteRequest)
         {
-            await _userRepository.RemoveFavorite(favoriteRequest.Id, favoriteRequest.UserId, favoriteRequest.MovieId);
+            await _userRepository.RemoveFavorite(favoriteRequest.UserId, favoriteRequest.MovieId);
         }
 
         //Exist
@@ -86,6 +86,8 @@ namespace Infrastructure.Services
             var favoriteExist = await _userRepository.UserPurchaseExist(movieId, userId);
             return favoriteExist;
         }
+
+        
 
         //GetAll
         public async Task<List<MovieCardModel>> GetAllFavoritesForUser(int id)
@@ -157,16 +159,30 @@ namespace Infrastructure.Services
             return purchaseDetails;
         }
 
+        public async Task<ReviewRequestModel> GetReviewDetails(int userId, int movieId)
+        {
+            var review = await _userRepository.GetUserReview(userId, movieId);
+            if (review != null)
+            {
+                var reviewDetails = new ReviewRequestModel()
+                {
+                    UserId = userId,
+                    MovieId = movieId,
+                    Rating = review.Rating,
+                    ReviewText = review.ReviewText
+                };
+                return reviewDetails;
+            }
+            return null;
+        }
+
         //Update
         public async Task UpdateMovieReview(ReviewRequestModel reviewRequest)
         {
-            var review = new Review
-            {
-                UserId = reviewRequest.UserId,
-                MovieId = reviewRequest.MovieId,
-                Rating = reviewRequest.Rating,
-                ReviewText = reviewRequest.ReviewText
-            };
+
+            var review = await _userRepository.GetUserReview(reviewRequest.UserId, reviewRequest.MovieId);
+            review.Rating = reviewRequest.Rating;
+            review.ReviewText = reviewRequest.ReviewText;
 
             var createdReview = await _userRepository.UpdateReview(review);
         }

@@ -7,7 +7,7 @@ using MovieShopMVC.Services;
 namespace MovieShopMVC.Controllers
 {
     [Authorize]
-    public class UserController: Controller
+    public class UserController : Controller
     {
         private readonly ICurrentUser _currentUser;
         private readonly IUserService _userService;
@@ -40,7 +40,8 @@ namespace MovieShopMVC.Controllers
         public async Task<IActionResult> Reviews()
         {
             var userId = _currentUser.UserId;
-            return View();
+            var reviewGet = await _userService.GetAllReviewsByUser(userId);
+            return View(reviewGet);
         }
 
         [HttpPost]
@@ -48,8 +49,8 @@ namespace MovieShopMVC.Controllers
         {
             var userId = _currentUser.UserId;
             var moviePrice = await _movieService.GetMoviePrice(movieId);
-           // var moviePrice = 
-            var purchaseRequest = new PurchaseRequestModel {
+            var purchaseRequest = new PurchaseRequestModel
+            {
                 MovieId = movieId,
                 UserId = userId,
                 PurchaseNumber = Guid.NewGuid(),
@@ -61,18 +62,60 @@ namespace MovieShopMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> FavoriteMovie()
+        public async Task<IActionResult> FavoriteMovie(int movieId)
         {
             var userId = _currentUser.UserId;
-            return View();
+            var favoriteRequest = new FavoriteRequestModel
+            {
+                MovieId = movieId,
+                UserId = userId
+            };
+            if (await _userService.FavoriteExists(userId, movieId))
+            {
+                await _userService.RemoveFavorite(favoriteRequest);
+            }
+            else
+            {
+                var favorite = await _userService.AddFavorite(favoriteRequest);
+            }
+            return RedirectToAction("Favorites");
         }
 
         [HttpPost]
-        public async Task<IActionResult> ReviewMovie(ReviewRequestModel reviewRequest)
+        public async Task<IActionResult> ReviewMovie(int movieId, decimal rating, string reviewText)
         {
             var userId = _currentUser.UserId;
-            await _userService.AddMovieReview(reviewRequest);
-            return View();
+            var reviewRequest = new ReviewRequestModel
+            {
+                UserId = userId,
+                MovieId = movieId,
+                Rating = rating,
+                ReviewText = reviewText
+            };
+            var revExist = await _userService.GetReviewDetails(userId, movieId);
+            if (revExist == null)
+            {
+                await _userService.AddMovieReview(reviewRequest);
+            }
+            else
+            {
+                await _userService.UpdateMovieReview(reviewRequest);
+            }
+
+            return RedirectToAction("Reviews");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteReviewMovie(int movieId)
+        {
+            var userId = _currentUser.UserId;
+            var revExist = await _userService.GetReviewDetails(userId, movieId);
+            if (revExist != null)
+            {
+                await _userService.DeleteMovieReview(userId, movieId);
+            }
+
+            return RedirectToAction("Reviews");
         }
     }
 }

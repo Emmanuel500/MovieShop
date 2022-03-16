@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repository
 {
-    public class UserRepository: EfRepository<User>, IUserRepository
+    public class UserRepository : EfRepository<User>, IUserRepository
     {
         public UserRepository(MovieShopDbContext dbContext) : base(dbContext)
         {
@@ -47,9 +47,9 @@ namespace Infrastructure.Repository
             return favorite;
         }
 
-        public async Task RemoveFavorite(int favoriteId, int userId, int movieId)
+        public async Task RemoveFavorite(int userId, int movieId)
         {
-            var favoriteToRemove = await _dbContext.Favorites.FirstOrDefaultAsync(f => f.UserId == userId && f.MovieId == movieId && f.Id == favoriteId);
+            var favoriteToRemove = await _dbContext.Favorites.FirstOrDefaultAsync(f => f.UserId == userId && f.MovieId == movieId);
             if (favoriteToRemove != null)
             {
                 _dbContext.Favorites.Remove(favoriteToRemove);
@@ -64,6 +64,12 @@ namespace Infrastructure.Repository
             return reviews;
         }
 
+        public async Task<Review> GetUserReview(int userId, int movieId)
+        {
+            var matchReview = await _dbContext.Reviews.FirstOrDefaultAsync(r => r.UserId == userId && r.MovieId == movieId);
+            return matchReview;
+        }
+
         public async Task<Review> AddReview(Review review)
         {
             _dbContext.Reviews.Add(review);
@@ -73,7 +79,8 @@ namespace Infrastructure.Repository
 
         public async Task<Review> UpdateReview(Review review)
         {
-            _dbContext.Reviews.Update(review);
+            //_dbContext.Reviews.Update(review);
+            _dbContext.Entry(review).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
             return review;
         }
@@ -102,9 +109,9 @@ namespace Infrastructure.Repository
             return purchases;
         }
 
-        public async Task<bool> UserPurchaseExist(int purchaseId, int userId)
+        public async Task<bool> UserPurchaseExist(int movieId, int userId)
         {
-            var matchPurchase = await _dbContext.Purchases.FirstOrDefaultAsync(f => f.UserId == userId && f.Id == purchaseId);
+            var matchPurchase = await _dbContext.Purchases.FirstOrDefaultAsync(f => f.UserId == userId && f.MovieId == movieId);
             if (matchPurchase != null)
             {
                 return true;
