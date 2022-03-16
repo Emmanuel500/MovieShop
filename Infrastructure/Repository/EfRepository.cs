@@ -1,5 +1,6 @@
 ﻿using ApplicationCore.Contracts.Repository;
 using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,8 @@ namespace Infrastructure.Repository
 
         public async Task<IEnumerable<T>> GetAll()
         {
-            throw new NotImplementedException();
+            var allEntities = await _dbContext.Set<T>().ToListAsync();
+            return allEntities;
         }
 
         public async Task<T> Add(T entity)
