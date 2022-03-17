@@ -151,11 +151,26 @@ namespace Infrastructure.Services
             return new PagedResultSet<MovieCardModel>(movieCards, pageNumber, pageSize, pagedMovies.Count);
         }
 
+        public async Task<PagedResultSet<ReviewRequestModel>> GetMovieReviews(int movieId, int pageSize = 30, int pageNumber = 1)
+        {
+            var pagedReviews = await _movieRepository.GetAllReviewsOfMovie(movieId, pageSize, pageNumber);
+
+            var movieReviews = new List<ReviewRequestModel>();
+
+            movieReviews.AddRange(pagedReviews.Data.Select(m => new ReviewRequestModel
+            {
+                UserId = m.UserId,
+                MovieId = m.MovieId,
+                Rating = m.Rating,
+                ReviewText = m.ReviewText
+            }));
+
+            return new PagedResultSet<ReviewRequestModel>(movieReviews, pageNumber, pageSize, pagedReviews.Count);
+        }
+
         public async Task<decimal> GetMoviePrice(int movieId)
         {
             return await _movieRepository.GetMoviePrice(movieId);
         }
-
-        
     }
 }
