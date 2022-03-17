@@ -64,6 +64,17 @@ namespace Infrastructure.Services
                 throw new Exception("un/pw in valid");
             }
 
+            //List for all roles user is
+            var roleList = new List<RoleModel>();
+            foreach(var userRole in user.UserRoles)
+            {
+                roleList.Add(new RoleModel
+                {
+                    Id = userRole.Role.Id,
+                    Name = userRole.Role.Name
+                });
+            }
+
             var hashedPassword = GetHashedPassword(password, user.Salt);
             if (hashedPassword == user.HashedPassword)
             {
@@ -73,7 +84,8 @@ namespace Infrastructure.Services
                     Id = user.Id,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
-                    DateOfBirth = user.DateOfBirth.GetValueOrDefault()
+                    DateOfBirth = user.DateOfBirth.GetValueOrDefault(),
+                    Roles = roleList
                 };
             }
             return null;

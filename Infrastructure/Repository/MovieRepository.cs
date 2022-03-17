@@ -20,8 +20,14 @@ namespace Infrastructure.Repository
         public async Task<IEnumerable<Movie>> GetTop30RevenueMovies()
         {
             // get top 30 movies by revenue
-            var movies = _dbContext.Movies.OrderByDescending(m => m.Revenue).Take(30);
+            var movies = await _dbContext.Movies.OrderByDescending(m => m.Revenue).Take(30).ToListAsync();
             return movies;
+        }
+
+        public async Task<IEnumerable<Movie>> GetTop30RatingMovies()
+        {
+            var ratedMovies = await _dbContext.Movies.Include(m => m.Reviews).OrderByDescending(m => m.Reviews.Sum(r => r.Rating)).Take(30).ToListAsync();
+            return ratedMovies;
         }
 
         public override async Task<Movie> GetById(int id)
@@ -34,8 +40,34 @@ namespace Infrastructure.Repository
             var movieDetails = await _dbContext.Movies.Include(m => m.Genres).ThenInclude(m => m.Genre)
                 .Include(m => m.MovieCasts).ThenInclude(m => m.Cast)
                 .Include(m => m.Trailers)
+                .Include(m => m.Reviews)
                 .FirstOrDefaultAsync(m => m.Id == id);
             return movieDetails;
+        }
+
+        public async Task<PagedResultSet<Movie>> GetAllMovies(int pageSize = 30, int pageNumber = 1)
+        {
+            // get total movies count
+            var totalMoviesCount = await _dbContext.Movies.CountAsync();
+
+            if (totalMoviesCount == 0)
+            {
+                throw new Exception("No Movies Found for that genre");
+            }
+
+
+            var movies = await _dbContext.Movies
+                .OrderBy(m => m.Id)
+                .Select(m => new Movie
+                {
+                    Id = m.Id,
+                    PosterUrl = m.PosterUrl,
+                    Title = m.Title
+                })
+                .Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            var pagedMovies = new PagedResultSet<Movie>(movies, pageNumber, pageSize, totalMoviesCount);
+            return pagedMovies;
         }
 
         public async Task<PagedResultSet<Movie>> GetMoviesByGenres(int genreId, int pageSize=30, int pageNumber=1)
@@ -70,5 +102,7 @@ namespace Infrastructure.Repository
             return movie.Price.GetValueOrDefault();
             
         }
+
+        
     }
 }
