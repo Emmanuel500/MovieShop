@@ -19,6 +19,20 @@ namespace Infrastructure.Services
             _userRepository = userRepository;
         }
 
+        //User Details
+        public async Task<RegisterModel> GetUserDetails(int id)
+        {
+            var user = await _userRepository.GetUserByID(id);
+            var userDetails = new RegisterModel
+            {
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                DateOfBirth = user.DateOfBirth
+            };
+            return userDetails;
+        }
+
         //Add
         public async Task<int> AddFavorite(FavoriteRequestModel favoriteRequest)
         {

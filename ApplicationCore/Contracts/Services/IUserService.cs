@@ -9,6 +9,7 @@ namespace ApplicationCore.Contracts.Services
 {
     public interface IUserService
     {
+        Task<RegisterModel> GetUserDetails(int id);
         Task<int> PurchaseMovie(PurchaseRequestModel purchaseRequest, int userId);
         Task<bool> IsMoviePurchased(int movieId, int userId);
         Task<List<MovieCardModel>> GetAllPurchasesForUser(int id);

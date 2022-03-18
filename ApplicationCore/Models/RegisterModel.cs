@@ -32,6 +32,6 @@ namespace ApplicationCore.Models
         // year should not be less than 1900
         // Minimum age should be 15
         [AllowedYearRange]
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
     }
 }

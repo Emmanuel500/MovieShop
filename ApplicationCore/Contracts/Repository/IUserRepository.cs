@@ -11,6 +11,7 @@ namespace ApplicationCore.Contracts.Repository
     {
         Task<bool> CheckEmail(string email);
         Task<User> GetUserByEmail(string email);
+        Task<User> GetUserByID(int id);
         Task<Favorite> AddFavorite(Favorite favorite);
         Task<Review> AddReview(Review review);
         Task<Purchase> AddPurchase(Purchase purchase);

@@ -33,6 +33,12 @@ namespace Infrastructure.Repository
             return user;
         }
 
+        public async Task<User> GetUserByID(int id)
+        {
+            var user = await _dbContext.Users.Include(u => u.UserRoles).ThenInclude(u => u.Role).FirstOrDefaultAsync(u => u.Id == id);
+            return user;
+        }
+
         //Favorites
         public async Task<IEnumerable<Favorite>> GetAllFavoritesFromUser(int userId)
         {
