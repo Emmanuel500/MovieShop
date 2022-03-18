@@ -21,6 +21,11 @@ namespace Infrastructure.Services
             _userRepository = userRepository;
         }
 
+        public async Task<bool> CheckEmail(string email)
+        {
+            return await _userRepository.CheckEmail(email);
+        }
+
         public async Task<int> CreateUser(RegisterModel model)
         {
             // check whether user has registered with same email

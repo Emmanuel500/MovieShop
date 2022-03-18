@@ -9,6 +9,7 @@ namespace ApplicationCore.Contracts.Repository
 {
     public interface IUserRepository: IRepository<User>
     {
+        Task<bool> CheckEmail(string email);
         Task<User> GetUserByEmail(string email);
         Task<Favorite> AddFavorite(Favorite favorite);
         Task<Review> AddReview(Review review);
