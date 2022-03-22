@@ -71,7 +71,8 @@ namespace Infrastructure.Services
                 BackdropUrl = movie.BackdropUrl,
                 PosterUrl = movie.PosterUrl,
                 ReleaseDate = movie.ReleaseDate,
-                TmdbUrl = movie.TmdbUrl
+                TmdbUrl = movie.TmdbUrl,
+                Rating = movie.Rating
             };
 
             movieDetails.Genres = new List<GenreModel>();
@@ -102,7 +103,6 @@ namespace Infrastructure.Services
                 });
 
             movieDetails.Reviews = new List<ReviewRequestModel>();
-            decimal totalRating = 0;
             foreach (var review in movie.Reviews)
             {
                 movieDetails.Reviews.Add(new ReviewRequestModel
@@ -112,10 +112,7 @@ namespace Infrastructure.Services
                     Rating = review.Rating,
                     ReviewText = review.ReviewText
                 });
-                totalRating += review.Rating;
             }
-
-            movieDetails.Rating = totalRating;
             return movieDetails;
         }
 

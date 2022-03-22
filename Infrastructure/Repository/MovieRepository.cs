@@ -42,6 +42,11 @@ namespace Infrastructure.Repository
                 .Include(m => m.Trailers)
                 .Include(m => m.Reviews)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
+            var movieRating = await _dbContext.Reviews.Where(r => r.MovieId == id).DefaultIfEmpty()
+            .AverageAsync(r => r == null ? 0 : r.Rating);
+            movieDetails.Rating = movieRating;
+
             return movieDetails;
         }
 
